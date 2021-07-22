@@ -2,6 +2,8 @@ import rcon
 import pickle
 import stdiomask
 import json
+import sys
+import time
 
 foundData = -1
 
@@ -46,6 +48,15 @@ if loadData == 'n':
         params = {"ip":ip,"port":port,"rcon":pswd}
         json.dump(params,f,indent=4)
 
-while True:
-    cmd = input(r"\rcon ")
-    conn.send(cmd)
+try:
+    while True:
+        cmd = input(r"\rcon ")
+        conn.send(cmd)
+except socket.gaierror:
+    print("ERROR : Host not found!")
+    time.sleep(2)
+    sys.exit()
+except ConnectionResetError:
+    print("ERROR : Check host and port combination!")
+    time.sleep(2)
+    sys.exit()
