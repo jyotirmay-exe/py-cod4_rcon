@@ -5,7 +5,7 @@ import json
 import sys
 import time
 import socket
-
+from socket import gaierror
 foundData = -1
 
 try:
@@ -53,11 +53,15 @@ try:
     while True:
         cmd = input(r"\rcon ")
         conn.send(cmd)
-except socket.gaierror:
+except gaierror:
     print("ERROR : Host not found!")
     time.sleep(2)
     sys.exit()
 except ConnectionResetError:
     print("ERROR : Check host and port combination!")
+    time.sleep(2)
+    sys.exit()
+except socket.timeout:
+    print("Server Connection timed out!")
     time.sleep(2)
     sys.exit()
