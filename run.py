@@ -49,19 +49,6 @@ if loadData == 'n':
         params = {"ip":ip,"port":port,"rcon":pswd}
         json.dump(params,f,indent=4)
 
-try:
-    while True:
-        cmd = input(r"\rcon ")
-        conn.send(cmd)
-except gaierror:
-    print("ERROR : Host not found!")
-    time.sleep(2)
-    sys.exit()
-except ConnectionResetError:
-    print("ERROR : Check host and port combination!")
-    time.sleep(2)
-    sys.exit()
-except socket.timeout:
-    print("Server Connection timed out!")
-    time.sleep(2)
-    sys.exit()
+while True:
+    cmd = input(r"\rcon ")
+    conn.send(cmd)
