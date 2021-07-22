@@ -28,7 +28,13 @@ class RCON:
             print("Server Connection timed out!")
             time.sleep(2)
             sys.exit()
-
+        import logger
+        logger.log(f"Connected to RCON @ {ip}:{port}")
+        msg = f"\xFF\xFF\xFF\xFFrcon {self.rcon} status"
+        byte = bytes(msg.encode("ISO-8859-1"))
+        sock.send(byte)
+        if sock.recv(1024).decode("ISO-8859-2")[10::]=="Bad rcon":
+            print("Invalid rcon password!")
     
     def send(self,cmd):
         global sock
