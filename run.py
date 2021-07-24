@@ -31,7 +31,6 @@ if loadData == 'y':
         conn = pickle.load(f)
     with open('.\data\serverparams.json','r') as f:
         params = json.load(f)
-        print(params)
         conn.__init__(params["ip"],params["port"],params["rcon"])
 
 if loadData == 'n' and foundData != 0:
