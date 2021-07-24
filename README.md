@@ -40,5 +40,6 @@ If the ip:port combination and the rcon password are correct, you should be able
 <h1>Features</h1>
 
  1. The first time you run this script, it would ask for ip, port and rcon password as inputs. But after the first execution, it saves the connection object and the parameters the the `data` folder. Upon re-executing, it will ask you if you want to load the server connection from the previous session. If you type in `y` you don't need to provide the connection details again, unless, you want to change the connection to a different server or have changed your rcon password.
+ 2. Commands sent and responses received and new connections are logged in the `logs` folder in a txt file.
  
 That's it till now. Hope you find it helpful!
