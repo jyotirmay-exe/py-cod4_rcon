@@ -6,6 +6,7 @@ import sys
 import time
 import socket
 from socket import gaierror
+
 foundData = -1
 
 try:
@@ -18,12 +19,11 @@ except EOFError as ex:
 loadData = 'n'
 
 if foundData == 1:
-    loadData = input("Load server connection from previous session? (y/n) : ").lower()
+    loadData = input("Load server connection from previous session? (y/n): ").lower()
 elif foundData == 0:
-    ip = input("Enter IP : ")
-    port = int(input("Enter Port : "))
-    pswd = stdiomask.getpass(prompt = "Enter RCON Password : ", mask = '*')
-
+    ip = input("Enter IP: ")
+    port = int(input("Enter Port: "))
+    pswd = stdiomask.getpass(prompt = "Enter RCON Password: ", mask = '*')
     conn = rcon.RCON(ip,port,pswd)
 
 if loadData == 'y':
@@ -34,9 +34,9 @@ if loadData == 'y':
         conn.__init__(params["ip"],params["port"],params["rcon"])
 
 if loadData == 'n' and foundData != 0:
-    ip = input("Enter IP : ")
-    port = int(input("Enter Port : "))
-    pswd = stdiomask.getpass(prompt = "Enter RCON Password : ", mask = '*')
+    ip = input("Enter IP: ")
+    port = int(input("Enter Port: "))
+    pswd = stdiomask.getpass(prompt = "Enter RCON Password: ", mask = '*')
 
     conn = rcon.RCON(ip,port,pswd)
 
