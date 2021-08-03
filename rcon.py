@@ -42,6 +42,10 @@ class RCON:
         logger.log(f"{datetime.now().strftime('%d/%m/%y %H:%M:%S')} >> Sent : {cmd}")
         byte = bytes(msg.encode("ISO-8859-1"))
         sock.send(byte)
-        res = sock.recv(10240).decode("ISO-8859-2")
-        logger.log(f"{datetime.now().strftime('%d/%m/%y %H:%M:%S')} >> Received : \n{res[10::]}\n")
-        print(res[10::])
+        while True:
+            try:
+                res = sock.recv(20480).decode("ISO-8859-2")
+            except:
+                break
+            logger.log(f"{datetime.now().strftime('%d/%m/%y %H:%M:%S')} >> Received : \n{res[10::]}\n")
+            print(res[10::])
