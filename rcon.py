@@ -20,7 +20,7 @@ class RCON:
             msg = f"\xFF\xFF\xFF\xFFrcon {self.rcon} status"
             byte = bytes(msg.encode("ISO-8859-1"))
             sock.send(byte)
-            if sock.recv(1024).decode("ISO-8859-2")[10::]=="Bad rcon":
+            if sock.recv(20480).decode("ISO-8859-2")[10::]=="Bad rcon":
                 print("Invalid rcon password!")
         #exceptions handling
         except gaierror:
